@@ -56,9 +56,9 @@ pub(crate) fn handle(
             }
         },
         cog: {
-            let cog_raw = pick_u64(&bv, 62, 17);
+            let cog_raw = pick_u64(&bv, 85, 9);
             if cog_raw != 91000 {
-                Some(cog_raw as f64 * 0.1)
+                Some(cog_raw as f64)
             } else {
                 None
             }
