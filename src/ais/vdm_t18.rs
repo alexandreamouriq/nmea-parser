@@ -83,6 +83,7 @@ pub(crate) fn handle(
         positioning_system_meta: None,
         current_gnss_position: None,
         special_manoeuvre: None,
+        number_message: { Some(pick_i64(&bv, 0, 6) as u8)},
     }))
 }
 

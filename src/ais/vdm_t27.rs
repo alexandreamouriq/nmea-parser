@@ -77,6 +77,7 @@ pub(crate) fn handle(
         class_b_mode_flag: None,
         class_b_css_flag: None,
         radio_status: None,
+        number_message: { Some(pick_i64(&bv, 0, 6) as u8)},
     }))
 }
 

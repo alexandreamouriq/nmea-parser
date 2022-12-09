@@ -127,6 +127,7 @@ pub(crate) fn handle(
         class_b_mode_flag: None,
         class_b_css_flag: None,
         radio_status: { Some(pick_u64(&bv, 149, 19) as u32) },
+        number_message: { Some(pick_i64(&bv, 0, 6) as u8)},
     }))
 }
 

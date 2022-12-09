@@ -222,6 +222,9 @@ pub struct VesselDynamicData {
     /// Diagnostic information for the radio system.
     /// <https://www.itu.int/dms_pubrec/itu-r/rec/m/R-REC-M.1371-1-200108-S!!PDF-E.pdf>
     pub radio_status: Option<u32>,
+
+    /// AIS type message 
+    pub number_message: Option<u8>,
 }
 
 /// AIS class which is either Class A or Class B
