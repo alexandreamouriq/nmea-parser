@@ -31,7 +31,7 @@ pub(crate) fn handle(
         rot: { None },
         rot_direction: { None },
         sog_knots: {
-            let sog_raw = pick_u64(&bv, 62, 6);
+            let sog_raw = pick_u64(&bv, 79, 6);
             if sog_raw != 63 {
                 Some(sog_raw as f64)
             } else {
