@@ -84,7 +84,7 @@ pub(crate) fn handle(
                     BitVec::from_bitslice(&bv[70..max(70, bv.len() - 20)])
                 } else {
                     if structured {
-                        BitVec::from_bitslice(&bv[86..max(86, bv.len() - 20)])
+                        BitVec::from_bitslice(&bv[56..max(56, bv.len() - 20)]) //86
                     } else {
                         BitVec::from_bitslice(&bv[40..max(40, bv.len() - 20)])
                     }
