@@ -59,7 +59,7 @@ pub(crate) fn handle(
             station: { station },
             mmsi: { pick_u64(&bv, 8, 30) as u32 },
             dest_mmsi: {
-                if addressed {
+                if addressed{
                     Some(pick_u64(&bv, 40, 30) as u32)
                 } else {
                     None
@@ -70,7 +70,7 @@ pub(crate) fn handle(
                     None
                 } else {
                     if structured {
-                        Some(pick_u64(&bv, 70, 16) as u16)
+                        Some(pick_u64(&bv, 40, 16) as u16) //70
                     } else {
                         None
                     }
@@ -81,9 +81,9 @@ pub(crate) fn handle(
                     BitVec::from_bitslice(&bv[70..max(70, bv.len())])
                 } else {
                     if structured {
-                        BitVec::from_bitslice(&bv[86..max(86, bv.len())])
+                        BitVec::from_bitslice(&bv[56..max(56, bv.len())]) //86
                     } else {
-                        BitVec::from_bitslice(&bv[40..max(40, bv.len())])
+                        BitVec::from_bitslice(&bv[40..max(40, bv.len())]) 
                     }
                 }
             },
@@ -132,7 +132,7 @@ mod test {
                     ParsedMessage::SingleSlotBinaryMessage(ssbm) => {
                         assert_eq!(ssbm.mmsi, 563648328);
                         assert_eq!(ssbm.dest_mmsi, None);
-                        assert_eq!(ssbm.app_id, Some(16424));
+                        assert_eq!(ssbm.app_id, Some(134));
                     }
                     ParsedMessage::Incomplete => {
                         assert!(false);
@@ -169,5 +169,29 @@ mod test {
                 assert_eq!(e.to_string(), "OK");
             }
         }
+
+        //test 4
+        match p.parse_sentence("!AIVDM,1,1,,,IVIVlpUVdQqN4h,4*2A") {
+            Ok(ps) => {
+                match ps {
+                    // The expected result
+                    ParsedMessage::SingleSlotBinaryMessage(ssbm) => {
+                        assert_eq!(ssbm.mmsi, 429503714);
+                        assert_eq!(ssbm.dest_mmsi, None);
+                        assert_eq!(ssbm.app_id, Some(26290));
+                    }
+                    ParsedMessage::Incomplete => {
+                        assert!(false);
+                    }
+                    _ => {
+                        assert!(false);
+                    }
+                }
+            }
+            Err(e) => {
+                assert_eq!(e.to_string(), "OK");
+            }
+        }
+
     }
 }
