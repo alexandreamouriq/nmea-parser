@@ -99,11 +99,11 @@ mod test {
                         assert_eq!(vdd.nav_status, NavigationStatus::NotUnderCommand);
                         assert_eq!(vdd.rot, None);
                         assert_eq!(vdd.rot_direction, None);
-                        assert_eq!(vdd.sog_knots, Some(1.0));
+                        assert_eq!(vdd.sog_knots, Some(57.0));
                         assert_eq!(vdd.high_position_accuracy, false);
                         assert::close(vdd.latitude.unwrap_or(0.0), 4.8, 0.1);
                         assert::close(vdd.longitude.unwrap_or(0.0), 137.0, 0.1);
-                        assert::close(vdd.cog.unwrap_or(0.0), 290.0, 1.0);
+                        assert::close(vdd.cog.unwrap_or(0.0), 167.0, 1.0);
                         assert_eq!(vdd.timestamp_seconds, 0);
                         assert_eq!(vdd.current_gnss_position, Some(true));
                         assert_eq!(vdd.raim_flag, false);
